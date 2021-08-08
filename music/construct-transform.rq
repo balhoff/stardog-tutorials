@@ -1,0 +1,18 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX : <http://stardog.com/tutorial/>
+
+CONSTRUCT {
+  ?album :genre ?genre .
+  ?album :playCount ?play_count .
+}
+WHERE {
+  ?row <#album> ?album_text ;
+       <#genre> ?genre_text ;
+       <#play%20count> ?play_count_text .
+
+  BIND(URI(CONCAT(STR(:), ?album_text)) AS ?album)
+  BIND(URI(CONCAT(STR(:), ENCODE_FOR_URI(REPLACE(?genre_text, "Heavy metal", "Metal")))) AS ?genre)
+  BIND(xsd:integer(?play_count_text) AS ?play_count)
+}
