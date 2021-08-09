@@ -77,3 +77,13 @@
    rdfs:comment "The length of a song in the album expressed in seconds." ;
    rdfs:domain :Song ;
    rdfs:range xsd:integer .
+
+:hasContributor a owl:ObjectProperty ;
+   rdfs:label "has contributor" ;
+   owl:propertyChainAxiom  ( :artist :member ) .
+
+:artist rdfs:subPropertyOf :hasContributor .
+
+:contributedTo a owl:ObjectProperty ;
+   rdfs:label "contributed to" ;
+   owl:inverseOf :hasContributor .
