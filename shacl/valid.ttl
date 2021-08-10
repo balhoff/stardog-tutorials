@@ -1,4 +1,5 @@
 PREFIX : <http://stardog.com/tutorial/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 :The_Beatles a :Band ;
     :name "The Beatles" ;

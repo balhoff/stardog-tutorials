@@ -6,6 +6,9 @@
 
 <http://stardog.com/tutorial/> a owl:Ontology .
 
+
+# Notice we replaced rdfs:Class with owl:Class
+
 :Person a owl:Class ;
    rdfs:label "Person" ;
    rdfs:comment "A person." .
@@ -36,6 +39,9 @@
    rdfs:label "Songwriter" ;
    rdfs:comment "A person or a group of people who participated in the creation of song as a composer or a lyricist." ;
    rdfs:subClassOf :Person .
+
+# Notice we replaced rdf:Property with specific OWL property types
+# owl:AnnotationProperty, owl:ObjectProperty, owl:DatatypeProperty
 
 :name a owl:AnnotationProperty ;
    rdfs:label "name" ;
@@ -71,6 +77,12 @@
    rdfs:comment "A person or a group of people who participated in the creation of song as a composer or a lyricist." ;
    rdfs:domain :Song ;
    rdfs:range :Songwriter .
+
+:wrote a owl:ObjectProperty ;
+   rdfs:label "wrote" ;
+   rdfs:domain :Songwriter ;
+   rdfs:range :Song ;
+   owl:inverseOf :writer .
 
 :length a owl:DatatypeProperty ;
    rdfs:label "length" ;
